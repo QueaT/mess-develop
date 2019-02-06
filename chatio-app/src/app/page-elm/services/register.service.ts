@@ -17,7 +17,7 @@ export class RegisterService implements OnInit {
   }
 
   sendData(form: HTMLFontElement) {
-    this.http.post('http://dvdx.nazwa.pl/test.php', form['value']).subscribe((
+    this.http.post('http://dvdx.nazwa.pl/register.php', form['value']).subscribe((
         (response) => this.hintSource.next(console.log(response))
     ));
 
