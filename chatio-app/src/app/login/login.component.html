@@ -1,0 +1,43 @@
+<div class="login-wrap">
+    <app-loader *ngIf="load"></app-loader>
+    <div class="login-cont">
+        <form class="form-wrap" (ngSubmit)="onSubmit(form)" #form="ngForm">
+        <div class="login-elm">
+        <label for="username"></label>
+        <div class="i-wrap">
+            <i #i1 [appChangeIconColor]=form.value
+               class="fas fa-users"></i>
+        </div>
+        <input #input type="text"
+               pattern="[a-zA-Z ]*"
+               id="username"
+               class="input-register"
+               ngModel
+               name="username"
+               placeholder="Podaj nick"
+               required minlength="4"
+               [appChangeIconColor]=form.value.username
+               [elemnt]="i1">
+        <span class="warning" *ngIf="!load">{{showStatus}}</span>
+        </div>
+        <div class="login-elm">
+            <label for="password"></label>
+            <div class="i-wrap">
+                <i #i2 class="fas fa-key"></i>
+            </div>
+            <input type="password"
+                   id="password"
+                   placeholder="Haslo"
+                   class="input-register"
+                   ngModel
+                   name="password"
+                   required minlength="4"
+                   [appChangeIconColor]=form.value.password
+                   [elemnt]="i2">
+        </div>
+            <button [disabled]="!form.valid" class="button-submit" type="submit">Zaloguj</button>
+        <span routerLink="/" class="login">Nie masz konta? Kliknij by sie zarejestrować</span>
+        </form>
+    </div>
+</div>
+
