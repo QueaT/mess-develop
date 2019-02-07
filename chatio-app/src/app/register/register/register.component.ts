@@ -1,6 +1,5 @@
-import {Component, ElementRef, EventEmitter, HostListener, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {RegisterService} from '../../page-elm/services/register.service';
-import {Subscription} from 'rxjs';
 
 
 @Component({
@@ -11,8 +10,6 @@ import {Subscription} from 'rxjs';
 })
 export class RegisterComponent implements OnInit {
     @ViewChild('load') loadElement: ElementRef;
-    loading = false;
-    sub = new Subscription();
     display: true;
     displayMess: string;
 
