@@ -10,7 +10,6 @@ import {Subscription} from 'rxjs';
 export class MainSideComponent implements OnInit {
     private sub = new Subscription();
     public friendArr = [];
-    public newFriends = [];
 
     constructor(private loggedUser: RegisterService) {
     }
@@ -21,8 +20,8 @@ export class MainSideComponent implements OnInit {
         //     console.log(this.friendArr);
         // }));
         if (this.loggedUser.toMain !== undefined) {
-            console.log(this.loggedUser.toMain);
-            this.friendArr = Object.values(this.loggedUser.toMain['user_friends']);
+            this.friendArr = Object.values(this.loggedUser.toMain['user_friends']).filter(friend => friend !== true);
+            console.log(this.friendArr, this.loggedUser.toMain);
         }
     }
 }
