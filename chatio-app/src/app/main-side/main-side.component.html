@@ -1,0 +1,29 @@
+<div class="container-main">
+
+    <div class="aside-cont">
+        <div class="user-you-cont">
+            <div class="user-you">
+                <div class="user-block">
+                    <img src="assets/img/us.jpg"/>
+                    <p *ngIf="loggedUser.toMain">{{loggedUser.toMain.user_data.username}}</p>
+                </div>
+                <i class="fas fa-ellipsis-h"></i>
+            </div>
+            <div class="search">
+                <input
+                        placeholder="  Wyszukaj kontakty">
+            </div>
+        </div>
+        <div class="contats-cont">
+            <div class="title">Moi znajomi:</div>
+            <div class="user-you user-margin" *ngFor="let friend of friendArr">
+                <div class="user-block">
+                    <img src="assets/img/us.jpg"/>
+                    <p>{{friend.username}}</p>
+                </div>
+                <div class="status"></div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,7 +1,10 @@
 const { app, BrowserWindow } = require('electron')
+const fs = require('fs');
 // Zachowaj globalną referencję obiektu okna, jeśli tego nie zrobisz, okno
 // zostanie zamknięte automatycznie, gdy obiekt JavaScript odśmieci pamięć.
 let win
+
+
 
 function createWindow () {
     // Stwórz okno przeglądarki.
@@ -12,7 +15,7 @@ function createWindow () {
 
     // Otwórz Narzędzia Deweloperskie.
     win.webContents.openDevTools()
-
+     // console.log(fs); //ogarnac fsa!
     // Emitowane, gdy okno jest zamknięte.
     win.on('closed', () => {
         // Dereference the window object, usually you would store windows

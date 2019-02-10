@@ -20,7 +20,6 @@ export class RegisterComponent implements OnInit {
         this.register.hint$.subscribe(data => {
             this.displayMess = data.message;
             this.display = data.status;
-            console.log(this.display,data);
         });
     }
 

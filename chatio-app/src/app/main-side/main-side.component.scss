@@ -1,0 +1,87 @@
+.container-main {
+  width: 100vw;
+  font-family: Helvetica;
+  height: 100vh;
+  background-color: rgb(212, 236, 240);
+}
+
+.aside-cont {
+  width: 20vw;
+  height: 100%;
+  color: white;
+  display: flex;
+
+  flex-direction: column;
+  box-shadow: 0px 0px 5px black;
+  background-color: #207097;
+}
+
+.user-you {
+  display: flex;
+  margin-top: 1rem;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.user-you-cont {
+  height: 20vh;
+}
+
+.user-you-cont input {
+  background-color: #ffffffb0;
+  border: none;
+  outline: none;
+  position: absolute;
+  left: 15%;
+  height: 20px;
+  border-radius: 10px;
+  margin-left: 0.5rem;
+}
+
+.user-you-cont input::placeholder {
+  color: black;
+  font-size: 0.7rem;
+}
+.user-margin{
+  margin-top: 0.5rem;
+  transition: 0.2s linear;
+}
+.user-margin:hover{
+  background-color: white;
+  opacity: 0.5;
+  color: black;
+}
+.user-you img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.user-block {
+  display: flex;
+  cursor: pointer;
+  width: 55%;
+  align-items: center;
+}
+.user-block p{
+  margin-left: 0.6rem;
+}
+.status {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #0cff00;
+}
+
+.contats-cont {
+
+}
+
+.title {
+  margin-left: 0.5rem;
+}
+.search{
+  position: relative;
+  margin-top: 0.5rem;
+}

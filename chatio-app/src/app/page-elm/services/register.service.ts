@@ -8,10 +8,14 @@ import {Subject} from 'rxjs';
 export class RegisterService implements OnInit {
     private hintSource = new Subject<any>();
     public hint$ = this.hintSource.asObservable();
+    private sendToMain = new Subject<any>();
+    public  sender = this.sendToMain.asObservable();
+    private  mainApp = new Subject<any>();
+    public  mainAppSend$ = this.mainApp.asObservable();
     public load = 0;
     loader = false;
     stop = false;
-    mainElm: any;
+    public  toMain;
 
     constructor(private http: HttpClient) {
     }
@@ -46,8 +50,14 @@ export class RegisterService implements OnInit {
         this.http.post('http://dvdx.nazwa.pl/api/login.php', form['value']).subscribe((
             (response: any) => {
                 this.hintSource.next(response);
+               // this.mainApp.next(response);
+                this.toMain = response;
             }
         ));
 
+    }
+
+    deleteTitle(elm: boolean) {
+        this.sendToMain.next(elm);
     }
 }

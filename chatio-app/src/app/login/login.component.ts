@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {RegisterService} from '../page-elm/services/register.service';
 import {Router} from '@angular/router';
 
@@ -7,7 +7,7 @@ import {Router} from '@angular/router';
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnChanges {
     showStatus: string;
     load: boolean;
     mainLink = false;
@@ -19,15 +19,21 @@ export class LoginComponent implements OnInit {
         this.load = false;
         this.loginServ.hint$.subscribe(data => {
             this.showStatus = data.message;
-            if (data.status === true) {
+            if (data.user_data.status === true) {
                 setTimeout(() => {
                     this.load = false;
-                    this.router.navigate(['/chatio']);
                     this.mainLink = true;
+                    this.loginServ.deleteTitle(this.mainLink);
+                    this.router.navigate(['/chatio']);
                 }, 2000);
             }
         });
     }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        console.log(changes);
+    }
+
 
     onSubmit(form: HTMLFontElement) {
         this.load = true;
