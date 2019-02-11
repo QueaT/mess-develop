@@ -10,6 +10,13 @@ import {Subscription} from 'rxjs';
 export class MainSideComponent implements OnInit {
     private sub = new Subscription();
     public friendArr = [];
+    private statusFriend = {
+        status: true,
+        mess: 'Moi znajomi'
+    };
+    public infoUser = null;
+    public   showUser = false;
+
 
     constructor(private loggedUser: RegisterService) {
     }
@@ -21,8 +28,21 @@ export class MainSideComponent implements OnInit {
         // }));
         if (this.loggedUser.toMain !== undefined) {
             this.friendArr = Object.values(this.loggedUser.toMain['user_friends']).filter(friend => friend !== true);
-            console.log(this.friendArr, this.loggedUser.toMain);
+            if (this.friendArr[0] === false) {
+                this.statusFriend.status = false;
+                this.statusFriend.mess = 'Brak znajomych :(';
+            }
+            console.log(this.loggedUser.toMain);
         }
+    }
+
+    getUser(id: number, elm, key) {
+        this.infoUser = {
+            id: id,
+            name: elm,
+            key: key,
+        };
+        this.showUser = true;
     }
 }
 

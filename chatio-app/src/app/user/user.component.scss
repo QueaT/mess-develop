@@ -1,0 +1,70 @@
+.cont{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+.user-cont {
+  width: 100%;
+  position: fixed;
+  height: 8%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #fcfbfe99;
+  box-shadow: 5px -1px 10px 2px #a8a8a8;
+}
+
+.user-block img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.user-block {
+  display: flex;
+  margin: 0.3rem;
+  cursor: pointer;
+  justify-content: space-between;
+  width: 65%;
+  align-items: center;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  background-color: #b8b8b8;
+  align-items: center;
+}
+.option-block{
+  display: flex;
+  align-items: center;
+  width: 13%;
+  justify-content: space-evenly;
+}
+.type-bar{
+  align-self: flex-end;
+  display: flex;
+  width: 100%;
+  height: 10vh;
+}
+.type-bar input{
+  border: none;
+  outline: none;
+  width: 70%;
+  height: 100%;
+  background-color: #b0e7f76e;
+}
+.send-block{
+  width: 10%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #247ba1;
+}
+.fa-location-arrow{
+  font-size: 2.5rem;
+}

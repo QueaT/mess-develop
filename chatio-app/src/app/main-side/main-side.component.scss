@@ -2,7 +2,8 @@
   width: 100vw;
   font-family: Helvetica;
   height: 100vh;
-  background-color: rgb(212, 236, 240);
+  display: flex;
+  background-color: #eafeffa3;
 }
 
 .aside-cont {
@@ -21,7 +22,7 @@
   margin-top: 1rem;
   justify-content: space-around;
   align-items: center;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .user-you-cont {
@@ -43,15 +44,18 @@
   color: black;
   font-size: 0.7rem;
 }
-.user-margin{
+
+.user-margin {
   margin-top: 0.5rem;
   transition: 0.2s linear;
 }
-.user-margin:hover{
+
+.user-margin:hover {
   background-color: white;
-  opacity: 0.5;
+  opacity: 0.9;
   color: black;
 }
+
 .user-you img {
   width: 30px;
   height: 30px;
@@ -64,9 +68,11 @@
   width: 55%;
   align-items: center;
 }
-.user-block p{
+
+.user-block p {
   margin-left: 0.6rem;
 }
+
 .status {
   width: 10px;
   height: 10px;
@@ -74,14 +80,16 @@
   background-color: #0cff00;
 }
 
-.contats-cont {
+.mess {
+  width: 100%;
 
 }
 
 .title {
   margin-left: 0.5rem;
 }
-.search{
+
+.search {
   position: relative;
   margin-top: 0.5rem;
 }

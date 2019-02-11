@@ -2,6 +2,7 @@ import {Injectable, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Subject} from 'rxjs';
 
+
 @Injectable({
     providedIn: 'root'
 })
@@ -27,6 +28,7 @@ export class RegisterService implements OnInit {
         this.loader = true;
         this.http.post('http://dvdx.nazwa.pl/api/register.php', form['value']).subscribe((
             (response: any) => {
+                console.log(response)
                 this.hintSource.next(response);
             }
         ));

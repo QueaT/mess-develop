@@ -10,6 +10,7 @@ import {CheckpassDirective} from './page-elm/directives/checkpass.directive';
 import { LoaderComponent } from './loader/loader.component';
 import { LoginComponent } from './login/login.component';
 import { MainSideComponent } from './main-side/main-side.component';
+import { UserComponent } from './user/user.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { MainSideComponent } from './main-side/main-side.component';
     CheckpassDirective,
     LoaderComponent,
     LoginComponent,
-    MainSideComponent
+    MainSideComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
