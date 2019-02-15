@@ -29,6 +29,7 @@
         </div>
     </div>
     <div class="mess">
-        <app-user *ngIf="infoUser !== null" [userInfo]="infoUser"></app-user>
+        <app-user *ngIf="infoUser !== null" [userInfo]="infoUser"
+                  [serviceInfo]="loggedUser.toMain"></app-user>
     </div>
 </div>
