@@ -1,8 +1,10 @@
-.cont{
+.cont {
   width: 100vw;
   height: 100vh;
   display: flex;
+  position: relative;
 }
+
 .user-cont {
   width: 100%;
   position: fixed;
@@ -39,20 +41,23 @@
   align-items: center;
   border: 2px solid #2196F3;
 }
-.option-block{
+
+.option-block {
   display: flex;
   align-items: center;
   width: 13%;
   justify-content: space-evenly;
 }
-.type-bar{
+
+.type-bar {
   align-self: flex-end;
   display: flex;
   width: 85%;
   position: relative;
   height: 7vh;
 }
-.type-bar input{
+
+.type-bar input {
   border: none;
   font-size: 1.2rem;
   padding-left: 1rem;
@@ -62,7 +67,8 @@
   height: 100%;
   background-color: #b0e7f76e;
 }
-.send-block{
+
+.send-block {
   width: 10%;
   height: 100%;
   display: flex;
@@ -73,6 +79,60 @@
   border-radius: 20px;
   background-color: #247ba1;
 }
-.fa-location-arrow{
+
+.fa-location-arrow {
   font-size: 2.5rem;
+}
+
+.chat-block {
+  display: flex;
+  position: absolute;
+  top: 5rem;
+  width: 100%;
+  height: 81%;
+}
+
+.chat-block-Output {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 75%;
+}
+
+.input {
+  max-height: 20px;
+  width: 45%;
+  word-wrap: break-word;
+  margin-left: 1rem;
+  background-color: white;
+  border-radius: 20px;
+  background-color: #721ee966;
+  padding: 0.5rem;
+
+}
+
+.output {
+  width: 45%;
+  word-wrap: break-word;
+  text-align: right;
+  align-self: flex-end;
+  background-color: #ffffff9c;
+  border-radius: 20px;
+  padding: 0.5rem;
+
+}
+
+.output p {
+  text-align: left;
+}
+
+.mess-cont {
+  width: 100%;
+  display: flex;
+  margin: 0.5rem;
+  flex-direction: column;
+}
+
+p {
+  margin: 0 !important;
 }
