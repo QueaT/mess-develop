@@ -36,8 +36,12 @@ export class UserComponent implements OnInit, OnChanges, OnDestroy {
             console.log(input);
             this.roomKey = input.key;
             if (input.msg !== undefined) {
-                this.roomMess[0].messenges.push({
-                    input: input.msg[0].message
+                input.msg.forEach((elm) => {
+                    if (elm.sender !== this.serviceInfo['user_data'].username) {
+                        this.roomMess[0].messenges.push({
+                            input: elm.message
+                        });
+                    }
                 });
             }
         });
