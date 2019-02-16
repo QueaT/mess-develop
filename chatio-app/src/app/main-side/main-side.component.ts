@@ -15,24 +15,19 @@ export class MainSideComponent implements OnInit {
         mess: 'Moi znajomi'
     };
     public infoUser = null;
-    public   showUser = false;
+    public showUser = false;
 
 
     constructor(private loggedUser: RegisterService) {
     }
 
     ngOnInit() {
-        // this.sub.add(this.loggedUser.mainAppSend$.subscribe(data => {
-        //     this.friendArr = Object.values(data.user_friends);
-        //     console.log(this.friendArr);
-        // }));
         if (this.loggedUser.toMain !== undefined) {
             this.friendArr = Object.values(this.loggedUser.toMain['user_friends']).filter(friend => friend !== true);
             if (this.friendArr[0] === false) {
                 this.statusFriend.status = false;
                 this.statusFriend.mess = 'Brak znajomych :(';
             }
-            console.log(this.loggedUser.toMain);
         }
     }
 

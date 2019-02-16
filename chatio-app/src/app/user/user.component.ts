@@ -1,4 +1,4 @@
-import {Component, DoCheck, HostListener, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import {Component, DoCheck, ElementRef, HostListener, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {ChatHandlerService} from '../page-elm/services/chat-handler.service';
 
 @Component({
@@ -7,8 +7,9 @@ import {ChatHandlerService} from '../page-elm/services/chat-handler.service';
     styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit, OnChanges, OnDestroy {
-    @Input() userInfo: { id: number, name: string, apiKey: any };
+    @Input() userInfo: { id: number, name: string, key: any };
     @Input() serviceInfo;
+    @ViewChild('chat') chat: ElementRef;
     logedInput: string;
     recivedInput: any;
     output = false;
@@ -18,12 +19,17 @@ export class UserComponent implements OnInit, OnChanges, OnDestroy {
         username: '',
         messenges: [{input: ''}, {output: ''}]
     }];
+    private friendMess: {
+        key: any
+        friend: string
+    };
+
 
     constructor(private Mess: ChatHandlerService) {
     }
 
     ngOnInit() {
-        this.recivedInput = this.Mess.inputChat();
+        // this.recivedInput = this.Mess.inputChat();
         this.Mess.hint$.subscribe((input) => {
             this.roomMess[0].messenges.push({
                 input: input
@@ -43,11 +49,16 @@ export class UserComponent implements OnInit, OnChanges, OnDestroy {
             username: '',
             messenges: [{input: 'kuba'}, {output: ''}]
         }];
-        console.log(this.roomMess);
+        this.friendMess = {
+            key: this.userInfo.key,
+            friend: this.friendName
+        };
+        this.Mess.inputChat(this.friendMess);
     }
 
     displayMess() {
         this.output = true;
+        console.log(this.serviceInfo);
         this.sendMessToBase = {
             name: this.serviceInfo['user_data'].username,
             mess: this.logedInput,
@@ -64,7 +75,7 @@ export class UserComponent implements OnInit, OnChanges, OnDestroy {
     onScroll(event) {
         console.log(event);
         console.log(pageYOffset);
-        console.log(window.innerHeight);
+        console.log(this.chat.nativeElement.innerHeight);
     }
 
 }

@@ -16,7 +16,7 @@
         </div>
         <div class="contats-cont">
             <div class="title">{{statusFriend.mess}}</div>
-            <div class="user-you user-margin" (click)="getUser(i,friend.username,loggedUser.toMain.user_data.key)"
+            <div class="user-you user-margin" (click)="getUser(i,friend.username,loggedUser.toMain['user_data'].key)"
                  *ngFor="let friend of friendArr; let i = index">
                 <div class="users-block" *ngIf="statusFriend.status">
                     <div class="user-block__ind" style="width: 70%;align-items: center;display: flex">

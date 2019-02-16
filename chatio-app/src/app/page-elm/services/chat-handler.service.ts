@@ -26,16 +26,12 @@ export class ChatHandlerService {
     /**
      *  funkcja odpowiedzialna za odbiernie wiadomosci
      */
-    inputChat() {
-        let iter = 0;
-        let zwrot = this.test[0];
-
-        setInterval(() => {
-            zwrot = this.test[iter++];
-            this.hintSource.next(zwrot);
-            if (iter === 6) {
-                iter = 0;
-            }
-        }, 4000);
+    inputChat(input: object) {
+        if (input !== undefined) {
+            console.log(input);
+            this.http.post('http://dvdx.nazwa.pl/api/get_msg.php?fbclid=IwAR3frG4PIGeMMKrracsN0cOeaQmOa5W06kAokM9aGVRQIRGTkXeW9SRIydo', input).subscribe(
+                (respone) => console.log(respone)
+            );
+        }
     }
 }
