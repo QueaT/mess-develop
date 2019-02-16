@@ -13,6 +13,10 @@ export class ChatHandlerService {
     constructor(private http: HttpClient) {
     }
 
+    /**
+     *  wysylanie wiadomosci
+     */
+
     outputChat(output: object) {
         this.http.post('http://dvdx.nazwa.pl/api/send_msg.php', output).subscribe(
             (respone) => console.log(respone)

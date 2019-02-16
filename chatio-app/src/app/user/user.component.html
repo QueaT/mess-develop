@@ -16,7 +16,7 @@
     </div>
     <div (scroll)="onScroll($event)" class="chat-block">
         <div class="chat-block-Output">
-            <ng-container *ngFor="let mess of OutputMess">
+            <ng-container *ngFor="let mess of roomMess[0].messenges">
                 <div *ngIf="mess.output" class="mess-cont">
                     <div class="output">
                         <p>{{mess.output}}</p>
@@ -28,6 +28,7 @@
                     </div>
                 </div>
             </ng-container>
+
         </div>
 
     </div>

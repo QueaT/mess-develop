@@ -95,6 +95,7 @@
 
 .chat-block-Output {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   height: 100%;
   width: 75%;
@@ -129,11 +130,13 @@
 
 .mess-cont {
   width: 100%;
+  order: 1;
   display: flex;
   margin: 0.5rem;
   flex-direction: column;
   min-height: 20px;
 }
+
 
 p {
   margin: 0 !important;
