@@ -27,7 +27,7 @@
   margin: 0.3rem;
   cursor: pointer;
   justify-content: space-between;
-  width: 65%;
+  width: 78%;
   align-items: center;
 }
 
@@ -45,7 +45,7 @@
 .option-block {
   display: flex;
   align-items: center;
-  width: 13%;
+  width: 15%;
   justify-content: space-evenly;
 }
 
@@ -89,6 +89,7 @@
   position: absolute;
   top: 5rem;
   width: 100%;
+  overflow: scroll;
   height: 81%;
 }
 
@@ -131,6 +132,7 @@
   display: flex;
   margin: 0.5rem;
   flex-direction: column;
+  min-height: 20px;
 }
 
 p {

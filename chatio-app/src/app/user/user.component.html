@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>
-    <div class="chat-block">
+    <div (scroll)="onScroll($event)" class="chat-block">
         <div class="chat-block-Output">
             <ng-container *ngFor="let mess of OutputMess">
                 <div *ngIf="mess.output" class="mess-cont">
