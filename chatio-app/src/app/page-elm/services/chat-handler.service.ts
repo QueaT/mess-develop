@@ -18,9 +18,7 @@ export class ChatHandlerService {
      */
 
     outputChat(output: object) {
-        this.http.post('http://dvdx.nazwa.pl/api/send_msg.php', output).subscribe(
-            (respone) => console.log(respone)
-        );
+        this.http.post('http://dvdx.nazwa.pl/api/send_msg.php', output);
     }
 
     /**
@@ -30,7 +28,7 @@ export class ChatHandlerService {
         if (input !== undefined) {
             console.log(input);
             this.http.post('http://dvdx.nazwa.pl/api/get_msg.php?fbclid=IwAR3frG4PIGeMMKrracsN0cOeaQmOa5W06kAokM9aGVRQIRGTkXeW9SRIydo', input).subscribe(
-                (respone) => console.log(respone)
+                (response) => this.hintSource.next(response)
             );
         }
     }
