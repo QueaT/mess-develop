@@ -8,6 +8,8 @@ import {Subject} from 'rxjs';
 export class ChatHandlerService {
     private hintSource = new Subject<any>();
     public hint$ = this.hintSource.asObservable();
+    private checkSrc = new Subject<any>();
+    public check$ = this.checkSrc.asObservable();
     test = ['jd', 'txt', 'wp', 'kuba', 'ok', 'jebanie', 'cipka', 'chuj'];
 
     constructor(private http: HttpClient) {
@@ -32,4 +34,5 @@ export class ChatHandlerService {
             );
         }
     }
+
 }

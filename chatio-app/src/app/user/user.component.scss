@@ -69,11 +69,11 @@
 }
 
 .send-block {
-  width: 10%;
+  width: 14%;
   height: 100%;
   display: flex;
   position: absolute;
-  right: -13%;
+  right: -16%;
   justify-content: center;
   align-items: center;
   border-radius: 20px;
@@ -115,6 +115,7 @@
 .output {
   width: 40%;
   word-wrap: break-word;
+  border: 1px solid #0053ff61;
   text-align: right;
   align-self: flex-end;
   background-color: #ffffff9c;

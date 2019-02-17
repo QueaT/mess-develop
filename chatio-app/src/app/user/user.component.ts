@@ -33,15 +33,14 @@ export class UserComponent implements OnInit, OnChanges, OnDestroy {
          *  Otrzymywanie danych po klikniecu w znajomego tj. mess,id
          */
         this.Mess.hint$.subscribe((input) => {
-            console.log(input);
             this.roomKey = input.key;
             if (input.msg !== undefined) {
                 input.msg.forEach((elm) => {
-                    if (elm.sender !== this.serviceInfo['user_data'].username) {
+                    if (elm.sender !== this.serviceInfo['user_data'].username && elm.message !== '') {
                         this.roomMess[0].messenges.push({
                             input: elm.message
                         });
-                    } else if (elm.sender !== this.friendName) {
+                    } else if (elm.sender !== this.friendName && elm.message !== '') {
                         this.roomMess[0].messenges.push({
                             output: elm.message
                         });
@@ -55,16 +54,16 @@ export class UserComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        this.roomMess[0].messenges = [];
-        this.friendName = changes.userInfo.currentValue.name;
-        this.roomMess[0].username = this.friendName;
-        this.roomMess = [{
-            username: '',
-            messenges: [{input: ''}, {output: ''}]
-        }];
-        this.getMessenges();
-        console.log(this.chat.nativeElement);
-        //  this.chat.nativeElement.scrollTop = this.chat.nativeElement.scrollHeight;
+        setInterval(() => {
+            this.roomMess[0].messenges = [];
+            this.friendName = changes.userInfo.currentValue.name;
+            this.roomMess[0].username = this.friendName;
+            this.roomMess = [{
+                username: '',
+                messenges: [{input: ''}, {output: ''}]
+            }];
+            this.getMessenges();
+        }, 2000);
 
     }
 
@@ -76,13 +75,16 @@ export class UserComponent implements OnInit, OnChanges, OnDestroy {
             reciver: this.friendName,
             roomKey: this.roomKey
         };
-        console.log(this.sendMessToBase);
         this.Mess.outputChat(this.sendMessToBase);
-        this.roomMess[0].messenges.push({
-            output: this.logedInput
-        });
+        if (this.logedInput !== '') {
+            this.roomMess[0].messenges.push({
+                output: this.logedInput
+            });
+        }
+        this.logedInput = '';
 
     }
+
     getMessenges() {
         this.friendMess = {
             key: this.userInfo.key,
@@ -90,4 +92,5 @@ export class UserComponent implements OnInit, OnChanges, OnDestroy {
         };
         this.Mess.inputChat(this.friendMess);
     }
+
 }
