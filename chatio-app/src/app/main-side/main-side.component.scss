@@ -1,4 +1,4 @@
-*{
+* {
   box-sizing: border-box;
 }
 
@@ -68,6 +68,7 @@
   box-shadow: 0px 0px 5px lime;
   border: 1px solid #0cff00;
 }
+
 .user-you img {
   width: 30px;
   height: 30px;
@@ -98,22 +99,37 @@
 }
 
 .title {
+  display: flex;
+  justify-content: space-around;
   margin-left: 0.5rem;
+}
+
+.title i {
+  transition: 0.1s linear;
+}
+
+.title i:hover {
+  transform: rotate(45deg);
+  color: #ffc107;
+  font-size: 1.1rem;
 }
 
 .search {
   position: relative;
   margin-top: 0.5rem;
 }
-.users-block{
+
+.users-block {
   display: flex;
   width: 90%;
   justify-content: space-around;
   align-items: center;
 }
+
 .user-block__ind p {
   margin-left: 0.3rem;
 }
-.statusOfine{
-  background-color: red;
+
+.statusOfine {
+  background-color: #ff1100;
 }

@@ -18,7 +18,7 @@ export class ChatHandlerService {
      */
 
     outputChat(output: object) {
-        this.http.post('http://dvdx.nazwa.pl/api/send_msg.php', output);
+        this.http.post('http://dvdx.nazwa.pl/api/send_msg.php', output).subscribe();
     }
 
     /**

@@ -15,7 +15,8 @@
             </div>
         </div>
         <div class="contats-cont">
-            <div class="title">{{statusFriend.mess}}</div>
+            <div class="title">{{statusFriend.mess}}
+                <i class="fas fa-plus-circle"></i></div>
             <div class="user-you user-margin" (click)="getUser(i,friend.username,loggedUser.toMain['user_data'].key)"
                  *ngFor="let friend of friendArr; let i = index">
                 <div class="users-block" *ngIf="statusFriend.status">
@@ -23,7 +24,7 @@
                         <img src="assets/img/us.jpg"/>
                         <p>{{friend.username}}</p>
                     </div>
-                    <div class="status" [ngClass]="{statusOfine:friend.loged === 0}"></div>
+                    <div class="status" [ngClass]="{statusOfine:friend.loged == 0}"></div>
                 </div>
             </div>
         </div>

@@ -52,7 +52,7 @@ export class RegisterService implements OnInit {
         this.http.post('http://dvdx.nazwa.pl/api/login.php', form['value']).subscribe((
             (response: any) => {
                 this.hintSource.next(response);
-               // this.mainApp.next(response);
+                console.log(response);
                 this.toMain = response;
             }
         ));

@@ -41,6 +41,10 @@ export class UserComponent implements OnInit, OnChanges, OnDestroy {
                         this.roomMess[0].messenges.push({
                             input: elm.message
                         });
+                    } else if (elm.sender !== this.friendName) {
+                        this.roomMess[0].messenges.push({
+                            output: elm.message
+                        });
                     }
                 });
             }
@@ -59,6 +63,9 @@ export class UserComponent implements OnInit, OnChanges, OnDestroy {
             messenges: [{input: ''}, {output: ''}]
         }];
         this.getMessenges();
+        console.log(this.chat.nativeElement);
+        //  this.chat.nativeElement.scrollTop = this.chat.nativeElement.scrollHeight;
+
     }
 
     displayMess() {
@@ -76,13 +83,6 @@ export class UserComponent implements OnInit, OnChanges, OnDestroy {
         });
 
     }
-
-    onScroll(event) {
-        console.log(event);
-        console.log(pageYOffset);
-        console.log(this.chat.nativeElement.innerHeight);
-    }
-
     getMessenges() {
         this.friendMess = {
             key: this.userInfo.key,

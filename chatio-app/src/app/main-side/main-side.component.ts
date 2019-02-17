@@ -29,6 +29,7 @@ export class MainSideComponent implements OnInit {
                 this.statusFriend.mess = 'Brak znajomych :(';
             }
         }
+        console.log(this.friendArr);
     }
 
     getUser(id: number, elm, key) {
