@@ -33,7 +33,7 @@
 
     </div>
     <div class="type-bar">
-        <input [(ngModel)]="logedInput">
+        <input [(ngModel)]="logedInput" (keydown.enter)="displayMess()">
         <div (click)="displayMess()" class="send-block">
             <i style="color: white; font-size: 1.6rem" class="fab fa-facebook-messenger"></i>
         </div>

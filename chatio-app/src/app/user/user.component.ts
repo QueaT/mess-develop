@@ -54,17 +54,14 @@ export class UserComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        setInterval(() => {
-            this.roomMess[0].messenges = [];
-            this.friendName = changes.userInfo.currentValue.name;
-            this.roomMess[0].username = this.friendName;
-            this.roomMess = [{
-                username: '',
-                messenges: [{input: ''}, {output: ''}]
-            }];
-            this.getMessenges();
-        }, 2000);
-
+        this.roomMess[0].messenges = [];
+        this.friendName = changes.userInfo.currentValue.name;
+        this.roomMess[0].username = this.friendName;
+        this.roomMess = [{
+            username: '',
+            messenges: [{input: ''}, {output: ''}]
+        }];
+        this.getMessenges();
     }
 
     displayMess() {
@@ -82,15 +79,18 @@ export class UserComponent implements OnInit, OnChanges, OnDestroy {
             });
         }
         this.logedInput = '';
+        this.getMessenges();
 
     }
 
     getMessenges() {
-        this.friendMess = {
-            key: this.userInfo.key,
-            friend: this.friendName
-        };
-        this.Mess.inputChat(this.friendMess);
+        setInterval(() => {
+            this.friendMess = {
+                key: this.userInfo.key,
+                friend: this.friendName
+            };
+            this.Mess.inputChat(this.friendMess);
+        }, 2000);
     }
 
 }

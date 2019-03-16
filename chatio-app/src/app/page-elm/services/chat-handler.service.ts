@@ -30,7 +30,10 @@ export class ChatHandlerService {
         if (input !== undefined) {
             console.log(input);
             this.http.post('http://dvdx.nazwa.pl/api/get_msg.php?fbclid=IwAR3frG4PIGeMMKrracsN0cOeaQmOa5W06kAokM9aGVRQIRGTkXeW9SRIydo', input).subscribe(
-                (response) => this.hintSource.next(response)
+                (response) => {
+                    console.log(response);
+                    this.hintSource.next(response);
+                }
             );
         }
     }
