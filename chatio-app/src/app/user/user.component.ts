@@ -29,6 +29,7 @@ export class UserComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     ngOnInit() {
+        this.getMessenges();
         /**
          *  Otrzymywanie danych po klikniecu w znajomego tj. mess,id
          */
@@ -61,7 +62,6 @@ export class UserComponent implements OnInit, OnChanges, OnDestroy {
             username: '',
             messenges: [{input: ''}, {output: ''}]
         }];
-        this.getMessenges();
     }
 
     displayMess() {
@@ -79,8 +79,6 @@ export class UserComponent implements OnInit, OnChanges, OnDestroy {
             });
         }
         this.logedInput = '';
-        this.getMessenges();
-
     }
 
     getMessenges() {
