@@ -35,6 +35,7 @@ export class UserComponent implements OnInit, OnChanges, OnDestroy {
          */
         this.Mess.hint$.subscribe((input) => {
             this.roomKey = input.key;
+            this.roomMess[0].messenges = [];
             if (input.msg !== undefined) {
                 input.msg.forEach((elm) => {
                     if (elm.sender !== this.serviceInfo['user_data'].username && elm.message !== '') {
