@@ -1,5 +1,7 @@
 import {Component, DoCheck, ElementRef, HostListener, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {ChatHandlerService} from '../page-elm/services/chat-handler.service';
+import {delay, repeat} from 'rxjs/operators';
+import {InternalViewRef} from '@angular/core/src/linker/view_ref';
 
 @Component({
     selector: 'app-user',
@@ -13,8 +15,9 @@ export class UserComponent implements OnInit, OnChanges, OnDestroy {
     logedInput: string;
     output = false;
     roomKey: any;
+    checkEngine: any;
     friendName: string;
-    sendMessToBase: { name: string, mess: string, reciver: string, roomKey: number };
+    sendMessToBase: { name: string, mess: string, reciver: string };
     roomMess = [{
         username: '',
         messenges: [{input: ''}, {output: ''}]
@@ -33,30 +36,32 @@ export class UserComponent implements OnInit, OnChanges, OnDestroy {
         /**
          *  Otrzymywanie danych po klikniecu w znajomego tj. mess,id
          */
-        this.Mess.hint$.subscribe((input) => {
-            if (input) {
-                this.roomKey = input.key;
-                this.roomMess[0].messenges = [];
-                if (input.msg !== undefined) {
-                    input.msg.forEach((elm) => {
-                        if (elm.sender !== this.serviceInfo['user_data'].username && elm.message !== '') {
-                            this.roomMess[0].messenges.push({
-                                input: elm.message
-                            });
-                        } else if (elm.sender !== this.friendName && elm.message !== '') {
-                            this.roomMess[0].messenges.push({
-                                output: elm.message
-                            });
-                        }
-                    });
-                }
-            } else {
-                this.displayMess(false);
-            }
-        });
+        this.getDataFromDb();
+
     }
 
     ngOnDestroy(): void {
+        clearInterval(this.checkEngine);
+    }
+
+    getDataFromDb() {
+        this.Mess.hint$.subscribe((input) => {
+            this.roomKey = input.key;
+            this.roomMess[0].messenges = [];
+            if (input.msg !== undefined) {
+                input.msg.forEach((elm) => {
+                    if (elm.sender !== this.serviceInfo['user_data'].username && elm.message !== '') {
+                        this.roomMess[0].messenges.push({
+                            input: elm.message
+                        });
+                    } else if (elm.sender !== this.friendName && elm.message !== '') {
+                        this.roomMess[0].messenges.push({
+                            output: elm.message
+                        });
+                    }
+                });
+            }
+        });
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -69,13 +74,12 @@ export class UserComponent implements OnInit, OnChanges, OnDestroy {
         }];
     }
 
-    displayMess(status = true) {
+    displayMess() {
         this.output = true;
         this.sendMessToBase = {
             name: this.serviceInfo['user_data'].username,
             mess: this.logedInput,
             reciver: this.friendName,
-            roomKey: status ? this.roomKey : false
         };
         console.log(this.sendMessToBase);
         this.Mess.outputChat(this.sendMessToBase);
@@ -88,13 +92,15 @@ export class UserComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     getMessenges() {
-        setInterval(() => {
+        this.checkEngine = setInterval(() => {
             this.friendMess = {
                 key: this.userInfo.key,
                 friend: this.friendName
             };
+            console.log(this.friendMess);
             this.Mess.inputChat(this.friendMess);
         }, 2000);
+
     }
 
 }

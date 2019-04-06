@@ -4,6 +4,7 @@ import {from, fromEvent, Observable, of} from 'rxjs';
 
 import {debounceTime, exhaustMap, filter, map, subscribeOn, switchMap, tap, throttleTime} from 'rxjs/operators';
 import {SearchFriendaService} from '../page-elm/services/search-frienda.service';
+import {RegisterService} from '../page-elm/services/register.service';
 
 @Component({
     selector: 'app-friend-search',
@@ -13,26 +14,33 @@ import {SearchFriendaService} from '../page-elm/services/search-frienda.service'
 export class FriendSearchComponent implements OnInit {
     inputValue: string;
     filteredFriends: [];
-    @Input() userInfo: { key: string };
+    @Input() userInfo: string;
     @ViewChild('input') input: ElementRef;
 
-    constructor(private searchFriendaService: SearchFriendaService) {
+    constructor(private searchFriendaService: SearchFriendaService, private loggedUser: RegisterService) {
     }
 
     ngOnInit() {
         const inputObser = fromEvent(this.input.nativeElement, 'input').pipe(
             debounceTime(500),
             switchMap((event: any) => {
-                console.log('ok');
-                console.log(event.target.value, this.userInfo.key);
                 return this.searchFriendaService.getFriends(event.target.value, this.userInfo);
             })
         );
-        inputObser.subscribe((elm: any) => this.filteredFriends = elm);
+        inputObser.subscribe((elm: any) => {
+            console.log(elm);
+            this.filteredFriends = elm;
+        });
     }
 
-    addFriend(friendInfo) {
-        console.log(friendInfo);
+    addFriend(friendKey) {
+        const friendInfo = {
+            user_key: this.userInfo,
+            friend_key: friendKey
+        };
+        this.searchFriendaService.addFriends(friendInfo).subscribe(resp => {
+            console.log(resp);
+        });
     }
 
 }

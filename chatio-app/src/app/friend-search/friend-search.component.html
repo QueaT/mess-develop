@@ -7,6 +7,6 @@
     <h4>Wyniki Wyszukiwania:</h4>
     <div class="response-wrapper" *ngFor="let filteredFriend of filteredFriends">
         <p>{{filteredFriend.name}}</p>
-        <button (click)="addFriend(filteredFriend)">Dodaj</button>
+        <button (click)="addFriend(filteredFriend.key)">Dodaj</button>
     </div>
 </div>

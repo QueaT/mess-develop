@@ -16,7 +16,6 @@ export class SearchFriendaService {
     }
 
     getFriends(searchedFriend: string, key: string) {
-        console.log(key);
         const send = {
             user_name: searchedFriend,
             user_key: key
@@ -26,5 +25,9 @@ export class SearchFriendaService {
                 return elm.name.toLowerCase().includes(searchedFriend.toLowerCase());
             }), toArray());
         }));
+    }
+
+    addFriends(friendObject) {
+        return this.https.post('http://dvdx.nazwa.pl/api/add_user.php', friendObject);
     }
 }
