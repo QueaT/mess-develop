@@ -1,0 +1,12 @@
+<div class="search-container">
+    <div class="search__wrap">
+        <input #input type="text" class="form-control" [(ngModel)]="inputValue" placeholder="Wyszukaj znajomego">
+    </div>
+</div>
+<div class="response-container">
+    <h4>Wyniki Wyszukiwania:</h4>
+    <div class="response-wrapper" *ngFor="let filteredFriend of filteredFriends">
+        <p>{{filteredFriend.name}}</p>
+        <button (click)="addFriend(filteredFriend)">Dodaj</button>
+    </div>
+</div>

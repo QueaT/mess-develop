@@ -1,6 +1,7 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import {RegisterService} from '../page-elm/services/register.service';
 import {Router} from '@angular/router';
+
 
 @Component({
     selector: 'app-login',
@@ -19,6 +20,8 @@ export class LoginComponent implements OnInit, OnChanges {
         this.load = false;
         this.loginServ.hint$.subscribe(data => {
             this.showStatus = data.message;
+
+
             if (data.user_data.status === true) {
                 setTimeout(() => {
                     this.load = false;
@@ -33,7 +36,6 @@ export class LoginComponent implements OnInit, OnChanges {
     ngOnChanges(changes: SimpleChanges): void {
         console.log(changes);
     }
-
 
     onSubmit(form: HTMLFontElement) {
         this.load = true;

@@ -11,6 +11,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { LoginComponent } from './login/login.component';
 import { MainSideComponent } from './main-side/main-side.component';
 import { UserComponent } from './user/user.component';
+import {FriendSearchComponent} from './friend-search/friend-search.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { UserComponent } from './user/user.component';
     LoaderComponent,
     LoginComponent,
     MainSideComponent,
-    UserComponent
+      UserComponent,
+      FriendSearchComponent
   ],
   imports: [
     BrowserModule,

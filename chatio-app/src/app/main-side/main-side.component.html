@@ -16,7 +16,7 @@
         </div>
         <div class="contats-cont">
             <div class="title">{{statusFriend.mess}}
-                <i class="fas fa-plus-circle"></i></div>
+                <i class="fas fa-plus-circle" (click)="toogleSearch()"></i></div>
             <div class="user-you user-margin" (click)="getUser(i,friend.username,loggedUser.toMain['user_data'].key)"
                  *ngFor="let friend of friendArr; let i = index">
                 <div class="users-block" *ngIf="statusFriend.status">
@@ -30,7 +30,8 @@
         </div>
     </div>
     <div class="mess">
-        <app-user *ngIf="infoUser !== null" [userInfo]="infoUser"
+        <app-user *ngIf="infoUser !== null else search" [userInfo]="infoUser"
                   [serviceInfo]="loggedUser.toMain"></app-user>
+        <app-friend-search [userInfo]="loggedUser.toMain.user_data.key" *ngIf="toggleSearchBar"></app-friend-search>
     </div>
 </div>

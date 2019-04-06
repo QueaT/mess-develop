@@ -100,6 +100,7 @@
 
 .title {
   display: flex;
+  align-items: center;
   justify-content: space-around;
   margin-left: 0.5rem;
 }
@@ -110,7 +111,7 @@
 
 .title i:hover {
   transform: rotate(45deg);
-  color: #ffc107;
+  color: #ff0092;
   font-size: 1.1rem;
 }
 

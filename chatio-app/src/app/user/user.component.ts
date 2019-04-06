@@ -34,20 +34,24 @@ export class UserComponent implements OnInit, OnChanges, OnDestroy {
          *  Otrzymywanie danych po klikniecu w znajomego tj. mess,id
          */
         this.Mess.hint$.subscribe((input) => {
-            this.roomKey = input.key;
-            this.roomMess[0].messenges = [];
-            if (input.msg !== undefined) {
-                input.msg.forEach((elm) => {
-                    if (elm.sender !== this.serviceInfo['user_data'].username && elm.message !== '') {
-                        this.roomMess[0].messenges.push({
-                            input: elm.message
-                        });
-                    } else if (elm.sender !== this.friendName && elm.message !== '') {
-                        this.roomMess[0].messenges.push({
-                            output: elm.message
-                        });
-                    }
-                });
+            if (input) {
+                this.roomKey = input.key;
+                this.roomMess[0].messenges = [];
+                if (input.msg !== undefined) {
+                    input.msg.forEach((elm) => {
+                        if (elm.sender !== this.serviceInfo['user_data'].username && elm.message !== '') {
+                            this.roomMess[0].messenges.push({
+                                input: elm.message
+                            });
+                        } else if (elm.sender !== this.friendName && elm.message !== '') {
+                            this.roomMess[0].messenges.push({
+                                output: elm.message
+                            });
+                        }
+                    });
+                }
+            } else {
+                this.displayMess(false);
             }
         });
     }
@@ -65,14 +69,15 @@ export class UserComponent implements OnInit, OnChanges, OnDestroy {
         }];
     }
 
-    displayMess() {
+    displayMess(status = true) {
         this.output = true;
         this.sendMessToBase = {
             name: this.serviceInfo['user_data'].username,
             mess: this.logedInput,
             reciver: this.friendName,
-            roomKey: this.roomKey
+            roomKey: status ? this.roomKey : false
         };
+        console.log(this.sendMessToBase);
         this.Mess.outputChat(this.sendMessToBase);
         if (this.logedInput !== '') {
             this.roomMess[0].messenges.push({

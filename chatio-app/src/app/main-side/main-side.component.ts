@@ -10,6 +10,7 @@ import {Subscription} from 'rxjs';
 export class MainSideComponent implements OnInit {
     private sub = new Subscription();
     public friendArr = [];
+    public toggleSearchBar: boolean;
     private statusFriend = {
         status: true,
         mess: 'Moi znajomi'
@@ -31,7 +32,14 @@ export class MainSideComponent implements OnInit {
         }
     }
 
+    toogleSearch() {
+        this.toggleSearchBar = !this.toggleSearchBar;
+        this.infoUser = null;
+    }
+
+
     getUser(id: number, elm, key) {
+        this.toggleSearchBar = false;
         this.infoUser = {
             id: id,
             name: elm,
